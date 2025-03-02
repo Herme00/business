@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Serviços | Empresa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --gold-hover: #E5C100;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --text-secondary: #aaaaaa;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        /* Neo-brutalist elements */
+        .neo-brutalist {
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .neo-brutalist::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .neo-brutalist:hover::before {
+            top: 5px;
+            left: 5px;
+        }
+
+        /* Layout elements */
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Grid layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: var(--transition);
+            background-color: var(--text-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 2px solid var(--gold);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--gold);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            color: var(--dark-bg);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary::before {
+            background-color: var(--gold-hover);
+        }
+
+        /* Page header */
+        .page-header {
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--darker-bg);
+            margin-top: 70px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .page-title span {
+            color: var(--gold);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services section */
+        .services {
+            position: relative;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .service-features i {
+            color: var(--gold);
+            margin-right: 0.8rem;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .service-link:hover {
+            padding-left: 5px;
+        }
+
+        .service-link span {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .service-link:hover span {
+            margin-left: 0.8rem;
+        }
+
+        /* Process section */
+        .process {
+            background-color: var(--darker-bg);
+            padding: 6rem 0;
+        }
+
+        .process-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-steps::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 40px;
+            width: calc(100% - 80px);
+            height: 2px;
+            background-color: var(--gold);
+            z-index: -1;
+        }
+
+        .process-step {
+            text-align: center;
+            width: calc(25% - 1rem);
+            position: relative;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background-color: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step:hover .step-number {
+            background-color: var(--gold);
+            color: var(--dark-bg);
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA section */
+        .cta {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta p {
+            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* FAQ section */
+        .faq {
+            background-color: var(--darker-bg);
+            padding: 6rem 0;
+        }
+
+        .faq-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .accordion-header:hover {
+            color: var(--gold);
+        }
+
+        .accordion-icon {
+            color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-content p {
+            padding-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li:not(:last-child) {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations for scroll reveal */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+        }
+
+        .reveal.active.fade-bottom {
+            animation: fade-bottom 1s ease-in-out;
+        }
+
+        .reveal.active.fade-left {
+            animation: fade-left 1s ease-in-out;
+        }
+
+        .reveal.active.fade-right {
+            animation: fade-right 1s ease-in-out;
+        }
+
+        @keyframes fade-bottom {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-left {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-right {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-steps::after {
+                display: none;
+            }
+
+            .process-step {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-link {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">EXCELLENCE<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Lar</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="servicos.html" class="nav-link">Serviços</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="index.html#contact" class="nav-link">Contacto</a>
+            </div>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">Nossos <span>Serviços</span></h1>
+            <p class="page-subtitle">Oferecemos soluções personalizadas para atender às necessidades únicas do seu negócio com excelência e inovação.</p>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-intro reveal fade-bottom">
+                <h2 class="section-title">O Que Oferecemos</h2>
+                <p>Nossa equipe de especialistas está comprometida em fornecer serviços de alta qualidade que impulsionam o crescimento e o sucesso do seu negócio. Conheça nossas principais ofertas:</p>
+            </div>
+
+            <div class="grid grid-3">
+                <!-- Service Card 1 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">Desenvolvimento Web</h3>
+                    <p class="service-description">Criamos websites profissionais, responsivos e otimizados para conversão que representam a identidade da sua marca.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Design personalizado e responsivo</li>
+                        <li><i class="fas fa-check"></i> Otimização para SEO e performance</li>
+                        <li><i class="fas fa-check"></i> Integração com CMS e e-commerce</li>
+                        <li><i class="fas fa-check"></i> Suporte técnico contínuo</li>
+                    </ul>
+                    <div class="service-price">AOA 5.999<span>/projeto</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Marketing Digital</h3>
+                    <p class="service-description">Estratégias de marketing digital personalizadas para aumentar a visibilidade da sua marca e gerar mais leads.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Gestão de redes sociais</li>
+                        <li><i class="fas fa-check"></i> Campanhas de Google Ads</li>
+                        <li><i class="fas fa-check"></i> Email marketing estratégico</li>
+                        <li><i class="fas fa-check"></i> Análise de resultados mensal</li>
+                    </ul>
+                    <div class="service-price">AOA 2.499<span>/mês</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">Identidade Visual</h3>
+                    <p class="service-description">Desenvolvemos a identidade visual da sua marca para criar uma presença memorável e profissional no mercado.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Criação de logotipos exclusivos</li>
+                        <li><i class="fas fa-check"></i> Manual de identidade visual</li>
+                        <li><i class="fas fa-check"></i> Papelaria corporativa completa</li>
+                        <li><i class="fas fa-check"></i> Versões adaptáveis para digital</li>
+                    </ul>
+                    <div class="service-price">AOA 3.499<span>/projeto</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">Aplicativos Mobile</h3>
+                    <p class="service-description">Desenvolvimento de aplicativos nativos para iOS e Android que conectam sua marca diretamente aos clientes.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Design UX/UI intuitivo</li>
+                        <li><i class="fas fa-check"></i> Desenvolvimento nativo ou híbrido</li>
+                        <li><i class="fas fa-check"></i> Backend robusto e escalável</li>
+                        <li><i class="fas fa-check"></i> Atualizações e manutenção</li>
+                    </ul>
+                    <div class="service-price">AOA 12.999<span>/projeto</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">Otimização para SEO</h3>
+                    <p class="service-description">Melhore o posicionamento do seu site nos motores de busca e aumente seu tráfego orgânico qualificado.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Auditoria SEO completa</li>
+                        <li><i class="fas fa-check"></i> Otimização on-page e off-page</li>
+                        <li><i class="fas fa-check"></i> Criação de conteúdo otimizado</li>
+                        <li><i class="fas fa-check"></i> Relatórios de desempenho mensais</li>
+                    </ul>
+                    <div class="service-price">AOA 1.999<span>/mês</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="service-title">Hospedagem Premium</h3>
+                    <p class="service-description">Soluções de hospedagem seguras e de alto desempenho para garantir que seu site esteja sempre online.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Servidores de alta performance</li>
+                        <li><i class="fas fa-check"></i> Backup automático diário</li>
+                        <li><i class="fas fa-check"></i> Certificado SSL gratuito</li>
+                        <li><i class="fas fa-check"></i> Suporte técnico 24/7</li>
+                    </ul>
+                    <div class="service-price">AOA 99<span>/mês</span></div>
+                    <a href="#" class="service-link">Saiba mais <span>&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="process-intro reveal fade-bottom">
+                <h2 class="section-title">Nosso Processo</h2>
+                <p>Trabalhamos com uma metodologia clara e transparente para garantir resultados excepcionais em cada projeto. Conheça as etapas do nosso processo de trabalho:</p>
+            </div>
+
+            <div class="process-steps">
+                <!-- Step 1 -->
+                <div class="process-step reveal fade-bottom">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Descoberta</h3>
+                    <p class="step-description">Analisamos as necessidades do seu negócio, objetivos e desafios para entender completamente seu projeto.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step reveal fade-bottom">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Estratégia</h3>
+                    <p class="step-description">Desenvolvemos um plano estratégico personalizado com base na análise inicial e nas metas estabelecidas.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step reveal fade-bottom">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Desenvolvimento</h3>
+                    <p class="step-description">Executamos o projeto com padrões de qualidade rigorosos e feedback constante<p class="step-description">Executamos o projeto com padrões de qualidade rigorosos e feedback constante durante todo o processo.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step reveal fade-bottom">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Entrega</h3>
+                    <p class="step-description">Finalizamos e entregamos o projeto, garantindo que todos os objetivos foram alcançados com excelência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content reveal fade-bottom">
+                <h2>Pronto para transformar seu negócio?</h2>
+                <p>Entre em contato conosco hoje mesmo para uma consulta gratuita e descubra como podemos ajudar a impulsionar o crescimento da sua empresa.</p>
+                <a href="contato.html" class="btn btn-primary neo-brutalist">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-intro reveal fade-bottom">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p>Encontre respostas para as dúvidas mais comuns sobre nossos serviços e processo de trabalho.</p>
+            </div>
+
+            <div class="accordion">
+                <!-- Question 1 -->
+                <div class="accordion-item reveal fade-bottom">
+                    <div class="accordion-header">
+                        <h3>Qual é o prazo médio para desenvolvimento de um website?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>O prazo para desenvolvimento de um website varia de acordo com a complexidade do projeto. Em média, websites institucionais levam de 30 a 45 dias, enquanto e-commerces e plataformas mais complexas podem levar de 60 a 90 dias. Durante a fase de descoberta, definiremos um cronograma detalhado para o seu projeto.</p>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="accordion-item reveal fade-bottom">
+                    <div class="accordion-header">
+                        <h3>Como funciona o processo de pagamento?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Trabalhamos com um modelo de pagamento dividido em etapas. Geralmente, solicitamos 40% do valor total no início do projeto, 30% na entrega dos layouts aprovados e 30% na conclusão e entrega final. Para serviços recorrentes como marketing digital e SEO, trabalhamos com mensalidades fixas com contrato mínimo de 3 meses.</p>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="accordion-item reveal fade-bottom">
+                    <div class="accordion-header">
+                        <h3>Vocês oferecem suporte após a entrega do projeto?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Sim, todos os nossos projetos incluem um período de suporte técnico gratuito de 30 dias após a entrega. Após esse período, oferecemos planos de manutenção mensal com diferentes níveis de suporte, atualizações e melhorias conforme a necessidade do seu negócio.</p>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="accordion-item reveal fade-bottom">
+                    <div class="accordion-header">
+                        <h3>Vocês desenvolvem projetos para clientes internacionais?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Sim, atendemos clientes de diversos países. Nossa equipe está preparada para trabalhar remotamente com comunicação eficiente via videoconferências e plataformas de gerenciamento de projetos. Oferecemos atendimento em português, inglês e espanhol para facilitar a comunicação.</p>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="accordion-item reveal fade-bottom">
+                    <div class="accordion-header">
+                        <h3>É possível personalizar os pacotes de serviços?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Absolutamente! Entendemos que cada negócio tem necessidades únicas. Todos os nossos pacotes podem ser personalizados para atender aos requisitos específicos do seu projeto. Durante a consulta inicial, trabalharemos juntos para criar uma solução sob medida para sua empresa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="grid footer-grid">
+                    <div class="footer-col footer-about">
+                        <h4>Sobre a Excelência</h4>
+                        <p>Somos uma consultoria empresarial dedicada a ajudar organizações a alcançar crescimento sustentável e excelência operacional por meio de orientação estratégica e suporte à implementação.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#projects">Projectos</a></li>
+                            <li><a href="#testimonials">Testemunhas</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Nossos Serviços</h4>
+                        <ul>
+                            <li><a href="#">Estratégia de negócios</a></li>
+                            <li><a href="#">Consultoria em Inovação</a></li>
+                            <li><a href="#">Desenvolvimento de Talentos</a></li>
+                            <li><a href="#">Expansão de Mercado</a></li>
+                            <li><a href="#">Otimização de Processos</a></li>
+                            <li><a href="#">Desenvolvimento de marca</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Casos de estudos</a></li>
+                            <li><a href="#">Blogue</a></li>
+                            <li><a href="#">Relatórios da indústria</a></li>
+                            <li><a href="#">Webinars</a></li>
+                            <li><a href="#">Carreiras</a></li>
+                            <li><a href="#">Privacidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Excellence Business. Todos os direitos reservados. Criado pela <a href="" style="color: #b68302;">Herme Marketing</a></p>
+                </div>
+            </div>
+        </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Accordion Functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                const activeItem = document.querySelector('.accordion-item.active');
+                
+                if (activeItem && activeItem !== item) {
+                    activeItem.classList.remove('active');
+                }
+                
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

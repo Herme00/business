@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* All the CSS from the document has been included here */
+        /* Base styles and reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --gold-hover: #E5C100;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --text-secondary: #aaaaaa;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 5px;
+        }
+
+        /* Neo-brutalist elements */
+        .neo-brutalist {
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .neo-brutalist::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .neo-brutalist:hover::before {
+            top: 5px;
+            left: 5px;
+        }
+
+        /* Layout elements */
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Grid layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        nav.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: var(--transition);
+            background-color: var(--text-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 2px solid var(--gold);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--gold);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            color: var(--dark-bg);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary::before {
+            background-color: var(--gold-hover);
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero-title span {
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+
+        /* About section */
+        .about {
+            position: relative;
+            background-color: var(--darker-bg);
+        }
+
+        .about-grid {
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image::after {
+            content: "EXCELLENCE";
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            padding: 0.5rem 1rem;
+            background-color: var(--gold);
+            color: var(--dark-bg);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .stat-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services section */
+        .services {
+            position: relative;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .service-link:hover {
+            padding-left: 5px;
+        }
+
+        .service-link span {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .service-link:hover span {
+            margin-left: 0.8rem;
+        }
+
+        /* Projects section */
+        .projects {
+            background-color: var(--darker-bg);
+        }
+
+        .projects-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .project-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            padding: 2rem;
+        }
+
+        .project-card:hover .project-overlay {
+            height: 100%;
+            opacity: 1;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .project-category {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Testimonials section */
+        .testimonials {
+            position: relative;
+        }
+
+        .testimonials-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 2px solid var(--gold);
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* CTA section */
+        .cta {
+            background-color: var(--darker-bg);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta p {
+            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Contact section */
+        .contact {
+            position: relative;
+        }
+
+        .contact-grid {
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            min-width: 40px;
+            height: 40px;
+            background-color: var(--gold);
+            color: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p, .contact-details a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--gold);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li:not(:last-child) {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations for scroll reveal */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+        }
+
+        .reveal.active.fade-bottom {
+            animation: fade-bottom 1s ease-in-out;
+        }
+
+        .reveal.active.fade-left {
+            animation: fade-left 1s ease-in-out;
+        }
+
+        .reveal.active.fade-right {
+            animation: fade-right 1s ease-in-out;
+        }
+
+        @keyframes fade-bottom {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-left {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-right {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-link {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .about-grid {
+                gap: 3rem;
+            }
+
+            .about-image::after {
+                bottom: -10px;
+                right: -10px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-grid {
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">EXCELLENCE<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Lar</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="servicos.html" class="nav-link">Serviços</a>
+                <a href="produtos.html" class="nav-link">Produtos</a>
+                <a href="index.html#contact" class="nav-link">Contacto</a>
+            </div>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Nossa história de <span>Excelência</span></h1>
+                <p class="hero-subtitle">Descubra a paixão, dedicação e experiência que nos motivam a entregar resultados excepcionais para todos os nossos clientes.</p>
+                <div class="hero-btns">
+                    <a href="#about-company" class="btn btn-primary">Saiba mais</a>
+                    <a href="index.html#contact" class="btn">Entre em contato</a>
+                </div>
+            </div>
+        </div>
+        <a href="#about-company" class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- About Company section -->
+    <section id="about-company" class="about">
+        <div class="container">
+            <div class="grid grid-2 about-grid">
+                <div class="about-image reveal fade-right">
+                    <img src="includes/estilos/img/4.png" alt="About our company">
+                </div>
+                <div class="about-content reveal fade-left">
+                    <h2 class="section-title">Quem somos</h2>
+                    <p>Fundada em 2025, a EXCELLENCE BUSINESS rapidamente se estabeleceu como líder na entrega de serviços premium e soluções inovadoras em vários setores. Nosso comprometimento com a excelência e dedicação inabalável à satisfação do cliente nos diferencia da concorrência.</p>
+                    <p>Acreditamos em construir relacionamentos duradouros baseados em confiança, integridade e resultados excepcionais. Nossa equipe de profissionais experientes traz uma riqueza de conhecimento e expertise para cada projeto, garantindo que superemos as expectativas a cada passo.</p>
+                    <p>Nossos valores fundamentais de inovação, precisão e busca incansável pela perfeição orientam tudo o que fazemos.</p>
+                    <a href="services.html" class="btn">Nossos serviços</a>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-title">Clientes Satisfeitos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1+</div>
+                            <div class="stat-title">Anos de experiência</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">300+</div>
+                            <div class="stat-title">Projectos concluidos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-title">Membros da equipe de especialistas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Vision section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-intro reveal fade-bottom">
+                <h2 class="section-title">Nossa Visão e Missão</h2>
+                <p>Somos movidos por uma visão e um propósito claros de transformar o setor por meio da inovação e da excelência.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="service-title">Nossa Visão</h3>
+                    <p class="service-description">Ser reconhecido globalmente como o padrão ouro em nosso setor, revolucionando a maneira como os serviços são prestados e estabelecendo novos padrões de qualidade, inovação e satisfação do cliente.</p>
+                    <p class="service-description">Imaginamos um futuro em que nossas soluções se tornarão referência no setor, impulsionando mudanças positivas e entregando valor excepcional aos nossos clientes e partes interessadas.</p>
+                </div>
+
+                <div class="service-card reveal fade-bottom">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="service-title">Nossa Missão</h3>
+                    <p class="service-description">Para entregar consistentemente soluções inovadoras e de alta qualidade que excedam as expectativas do cliente e criem valor duradouro. Nós alcançamos isso por meio de nossa equipe dedicada, abordagens de ponta e compromisso inabalável com a excelência.</p>
+                    <p class="service-description">Todos os dias, trabalhamos para construir relacionamentos sólidos com os clientes, promovendo uma cultura de melhoria contínua e causando um impacto positivo nas comunidades que atendemos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa equipe section -->
+                    <section class="projects">
+                        <div class="container">
+                            <div class="projects-intro reveal fade-bottom">
+                                <h2 class="section-title">Nossa equipe</h2>
+                                <p>Conheça os profissionais talentosos por trás da nossa história de sucesso. Nossa equipe diversificada reúne expertise de vários campos para entregar resultados excepcionais.</p>
+                            </div>    
+                            <div class="grid grid-3">
+                                <div class="project-card reveal fade-bottom">
+                                    <img src="/api/placeholder/400/400" alt="Team Member" class="project-image">
+                                    <div class="project-overlay">
+                                        <h3 class="project-title">Hermenegildo Carvalho</h3>
+                                        <p class="project-category">co fundador da excellencebusness</p>
+                                        <p class="project-description">With over 15 years of industry experience, Sarah leads our company with vision and strategic insight. Her dedication to excellence drives our success.</p>
+                                        <div class="social-links">
+                                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-card reveal fade-bottom">
+                                    <img src="/api/placeholder/400/400" alt="Team Member" class="project-image">
+                                    <div class="project-overlay">
+                                        <h3 class="project-title">Michael Chen</h3>
+                                        <p class="project-category">Chief Technology Officer</p>
+                                        <p class="project-description">Michael brings cutting-edge technical expertise and innovation to every project, ensuring we stay ahead of industry trends.</p>
+                                        <div class="social-links">
+                                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-card reveal fade-bottom">
+                                    <img src="/api/placeholder/400/400" alt="Team Member" class="project-image">
+                                    <div class="project-overlay">
+                                        <h3 class="project-title">Elena Rodriguez</h3>
+                                        <p class="project-category">Creative Director</p>
+                                        <p class="project-description">Elena's eye for design and creative solutions helps transform complex challenges into elegant, user-centered experiences.</p>
+                                        <div class="social-links">
+                                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Core Values section -->
+                    <section class="testimonials">
+                        <div class="container">
+                            <div class="testimonials-intro reveal fade-bottom">
+                                <h2 class="section-title">Our Core Values</h2>
+                                <p>These principles guide our decisions, shape our culture, and define how we interact with clients and each other.</p>
+                            </div>
+                            
+                            <div class="grid grid-3">
+                                <div class="testimonial-card reveal fade-bottom">
+                                    <p class="testimonial-text">We pursue excellence in everything we do, from the smallest details to the most complex projects. We're never satisfied with "good enough" and constantly strive to exceed expectations.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <i class="fas fa-trophy" style="font-size: 2rem; color: var(--gold); display: flex; justify-content: center; align-items: center; height: 100%;"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Excellence</h4>
+                                            <p>Our highest standard</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card reveal fade-bottom">
+                                    <p class="testimonial-text">We believe in complete transparency with our clients and team members. We build trust through honest communication and by always doing what we say we'll do.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <i class="fas fa-handshake" style="font-size: 2rem; color: var(--gold); display: flex; justify-content: center; align-items: center; height: 100%;"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Integrity</h4>
+                                            <p>The foundation of trust</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="testimonial-card reveal fade-bottom">
+                                    <p class="testimonial-text">We embrace change and constantly seek new ways to improve. Innovation is at the heart of our approach to solving problems and creating value for our clients.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--gold); display: flex; justify-content: center; align-items: center; height: 100%;"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h4>Innovation</h4>
+                                            <p>Driving progress forward</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- CTA section -->
+                    <section class="cta">
+                        <div class="container">
+                            <div class="cta-content reveal fade-bottom">
+                                <h2>Ready to Work With Us?</h2>
+                                <p>Let's discuss how we can help you achieve your goals with our tailored solutions and expertise.</p>
+                                <a href="contact.html" class="btn neo-brutalist">Entre em contato</a>
+                            </div>
+                        </div>
+                    </section>
+                    
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="grid footer-grid">
+                    <div class="footer-col footer-about">
+                        <h4>Sobre a Excelência</h4>
+                        <p>Somos uma consultoria empresarial dedicada a ajudar organizações a alcançar crescimento sustentável e excelência operacional por meio de orientação estratégica e suporte à implementação.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#services">Serviços</a></li>
+                            <li><a href="#projects">Projectos</a></li>
+                            <li><a href="#testimonials">Testemunhas</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Nossos Serviços</h4>
+                        <ul>
+                            <li><a href="#">Estratégia de negócios</a></li>
+                            <li><a href="#">Consultoria em Inovação</a></li>
+                            <li><a href="#">Desenvolvimento de Talentos</a></li>
+                            <li><a href="#">Expansão de Mercado</a></li>
+                            <li><a href="#">Otimização de Processos</a></li>
+                            <li><a href="#">Desenvolvimento de marca</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Casos de estudos</a></li>
+                            <li><a href="#">Blogue</a></li>
+                            <li><a href="#">Relatórios da indústria</a></li>
+                            <li><a href="#">Webinars</a></li>
+                            <li><a href="#">Carreiras</a></li>
+                            <li><a href="#">Privacidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Excellence Business. Todos os direitos reservados. Criado pela <a href="" style="color: #b68302;">Herme Marketing</a></p>
+                </div>
+            </div>
+        </footer>
+                    
+                    <!-- JavaScript -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                        // Navigation menu toggle
+                        const menuToggle = document.querySelector('.menu-toggle');
+                        const navLinks = document.querySelector('.nav-links');
+                        
+                        menuToggle.addEventListener('click', () => {
+                            menuToggle.classList.toggle('active');
+                            navLinks.classList.toggle('active');
+                        });
+                        
+                        // Close menu when clicking on a link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.addEventListener('click', () => {
+                                menuToggle.classList.remove('active');
+                                navLinks.classList.remove('active');
+                            });
+                        });
+                        
+                        // Sticky navigation on scroll
+                        window.addEventListener('scroll', () => {
+                            const nav = document.querySelector('nav');
+                            if (window.scrollY > 50) {
+                                nav.classList.add('scrolled');
+                            } else {
+                                nav.classList.remove('scrolled');
+                            }
+                        });
+                        
+                        // Scroll reveal animations
+                        function revealOnScroll() {
+                            const reveals = document.querySelectorAll('.reveal');
+                            
+                            reveals.forEach(element => {
+                                const windowHeight = window.innerHeight;
+                                const elementTop = element.getBoundingClientRect().top;
+                                const elementVisible = 150;
+                                
+                                if (elementTop < windowHeight - elementVisible) {
+                                    element.classList.add('active');
+                                }
+                            });
+                        }
+                        
+                        window.addEventListener('scroll', revealOnScroll);
+                        window.addEventListener('load', revealOnScroll);
+                        
+                        // Smooth scrolling for anchor links
+                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                            anchor.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                
+                                const targetId = this.getAttribute('href');
+                                if (targetId === '#') return;
+                                
+                                const targetElement = document.querySelector(targetId);
+                                if (targetElement) {
+                                    window.scrollTo({
+                                        top: targetElement.offsetTop - 80,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            });
+                        });
+                        
+                        // Counter animation for stats
+                        function animateStats() {
+                            const stats = document.querySelectorAll('.stat-number');
+                            const statsSection = document.querySelector('.stats-grid');
+                            
+                            if (!statsSection) return;
+                            
+                            const sectionTop = statsSection.getBoundingClientRect().top;
+                            const windowHeight = window.innerHeight;
+                            
+                            if (sectionTop < windowHeight - 100) {
+                                stats.forEach(stat => {
+                                    const target = parseInt(stat.innerText);
+                                    let current = 0;
+                                    const duration = 2000; // ms
+                                    const increment = target / (duration / 16); // 60fps
+                                    
+                                    if (stat.style.opacity === '1') return; // Already animated
+                                    
+                                    stat.style.opacity = '1';
+                                    stat.style.transform = 'translateY(0)';
+                                    
+                                    const counter = setInterval(() => {
+                                        current += increment;
+                                        
+                                        if (current >= target) {
+                                            clearInterval(counter);
+                                            stat.innerText = target + (stat.innerText.includes('+') ? '+' : '');
+                                        } else {
+                                            stat.innerText = Math.floor(current) + (stat.innerText.includes('+') ? '+' : '');
+                                        }
+                                    }, 16);
+                                });
+                            }
+                        }
+                        
+                        window.addEventListener('scroll', animateStats);
+                        window.addEventListener('load', animateStats);
+                        
+                        // Parallax effect for hero section
+                        window.addEventListener('scroll', () => {
+                            const hero = document.querySelector('.hero');
+                            const scrollY = window.scrollY;
+                            
+                            hero.style.backgroundPositionY = scrollY * 0.5 + 'px';
+                        });
+                        
+                        // Current year for copyright
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const yearElement = document.querySelector('.footer-bottom p');
+                            if (yearElement) {
+                                const currentYear = new Date().getFullYear();
+                                yearElement.innerHTML = yearElement.innerHTML.replace('2025', currentYear);
+                            }
+                        });
+                    </script>
+                    </body>
+                    </html>
